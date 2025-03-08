@@ -1,7 +1,9 @@
-import HomePage from "./components/templates/HomePage";
-
 function App() {
-  return <HomePage />;
+  return (
+    <>
+      <h1>salam</h1>
+    </>
+  );
 }
 
 export default App;
