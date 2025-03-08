@@ -1,7 +1,7 @@
 import React from "react";
 
-const TableCoin = () => {
+const TableCoins = () => {
   return <div>TableCoin</div>;
 };
 
-export default TableCoin;
+export default TableCoins;
