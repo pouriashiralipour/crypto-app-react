@@ -1,6 +1,7 @@
 import React from "react";
 
-const TableCoins = () => {
+const TableCoins = ({ coins }) => {
+  console.log(coins);
   return <div>TableCoin</div>;
 };
 

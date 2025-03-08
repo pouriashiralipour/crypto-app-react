@@ -6,10 +6,11 @@ const HomePage = () => {
   const [coins, setCoins] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const res = fetch(getCoinList());
+      const res = await fetch(getCoinList());
       const json = await res.json();
       setCoins(json);
     };
+    getData();
   }, []);
   return (
     <div>
