@@ -5,7 +5,7 @@ import styles from "./TableCoins.module.css";
 import chartDown from "../../assets/chart-down.svg";
 import chartUp from "../../assets/chart-up.svg";
 
-const TableCoins = ({ coins, isLoading }) => {
+const TableCoins = ({ coins, isLoading, currency }) => {
   return (
     <div className={styles.container}>
       {isLoading ? (
@@ -24,7 +24,7 @@ const TableCoins = ({ coins, isLoading }) => {
           </thead>
           <tbody>
             {coins.map((coin) => (
-              <TableRow key={coin.id} coin={coin} />
+              <TableRow key={coin.id} coin={coin} currency={currency} />
             ))}
           </tbody>
         </table>
@@ -44,6 +44,7 @@ const TableRow = ({
     current_price,
     price_change_percentage_24h,
   },
+  currency,
 }) => {
   return (
     <tr>
@@ -54,7 +55,13 @@ const TableRow = ({
         </div>
       </td>
       <td>{name}</td>
-      <td>${current_price.toLocaleString()}</td>
+      {currency === "usd" ? (
+        <td>${current_price.toLocaleString()}</td>
+      ) : currency === "eur" ? (
+        <td>€{current_price.toLocaleString()}</td>
+      ) : (
+        <td>¥{current_price.toLocaleString()}</td>
+      )}
       <td
         className={
           price_change_percentage_24h > 0 ? styles.success : styles.error
