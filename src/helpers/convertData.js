@@ -5,7 +5,6 @@ const converData = (data, type) => {
       [type]: item[1],
     };
   });
-  console.log(data[type]);
   return convertedData;
 };
 

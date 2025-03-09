@@ -21,7 +21,6 @@ const Chart = ({ chart, setChart }) => {
       setType(type);
     }
   };
-  console.log(converData(chart, type));
   return (
     <div className={styles.container}>
       <span className={styles.cross} onClick={() => setChart(null)}>
@@ -49,15 +48,15 @@ const Chart = ({ chart, setChart }) => {
         <div className={styles.details}>
           <div>
             <p>Prices:</p>
-            <sapn>${chart.coin.current_price.toLocaleString()}</sapn>
+            <span>${chart.coin.current_price.toLocaleString()}</span>
           </div>
           <div>
             <p>ATH:</p>
-            <sapn>${chart.coin.ath.toLocaleString()}</sapn>
+            <span>${chart.coin.ath.toLocaleString()}</span>
           </div>
           <div>
             <p>Market Cap:</p>
-            <sapn>{chart.coin.market_cap.toLocaleString()}</sapn>
+            <span>{chart.coin.market_cap.toLocaleString()}</span>
           </div>
         </div>
       </div>
