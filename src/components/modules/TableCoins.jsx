@@ -1,11 +1,11 @@
-import React from "react";
+import SyncLoader from "react-spinners/SyncLoader";
 import TableRow from "./TableRow";
 
 const TableCoins = ({ coins, isLoading }) => {
   return (
     <div>
       {isLoading ? (
-        <p>LOADING ...</p>
+        <SyncLoader color="#3874ff" />
       ) : (
         <table>
           <thead>
