@@ -29,9 +29,9 @@ const Search = ({ setCurrency, currency }) => {
           alert(json.status.error_message);
         }
       } catch (error) {
-        if (error.name !== "AbortErorr") {
-          alert(error.message);
-        }
+        // if (error.name !== "AbortErorr") {
+        //   alert(error.message);
+        // }
       }
     };
     setIsLoading(true);
