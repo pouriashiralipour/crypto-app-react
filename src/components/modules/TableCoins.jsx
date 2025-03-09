@@ -1,13 +1,17 @@
 import SyncLoader from "react-spinners/SyncLoader";
-import TableRow from "./TableRow";
+
+import styles from "./TableCoins.module.css";
+
+import chartDown from "../../assets/chart-down.svg";
+import chartUp from "../../assets/chart-up.svg";
 
 const TableCoins = ({ coins, isLoading }) => {
   return (
-    <div>
+    <div className={styles.container}>
       {isLoading ? (
         <SyncLoader color="#3874ff" />
       ) : (
-        <table>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Coin</th>
@@ -17,10 +21,12 @@ const TableCoins = ({ coins, isLoading }) => {
               <th>Total Volume</th>
               <th></th>
             </tr>
+          </thead>
+          <tbody>
             {coins.map((coin) => (
               <TableRow key={coin.id} coin={coin} />
             ))}
-          </thead>
+          </tbody>
         </table>
       )}
     </div>
@@ -28,3 +34,41 @@ const TableCoins = ({ coins, isLoading }) => {
 };
 
 export default TableCoins;
+
+const TableRow = ({
+  coin: {
+    name,
+    image,
+    symbol,
+    total_volume,
+    current_price,
+    price_change_percentage_24h,
+  },
+}) => {
+  return (
+    <tr>
+      <td>
+        <div className={styles.symbol}>
+          <img src={image} alt={name} />
+          <span>{symbol.toUpperCase()}</span>
+        </div>
+      </td>
+      <td>{name}</td>
+      <td>${current_price.toLocaleString()}</td>
+      <td
+        className={
+          price_change_percentage_24h > 0 ? styles.success : styles.error
+        }
+      >
+        {price_change_percentage_24h.toFixed(2)}
+      </td>
+      <td>{total_volume.toLocaleString()}</td>
+      <td>
+        <img
+          src={price_change_percentage_24h > 0 ? chartUp : chartDown}
+          alt={name}
+        />
+      </td>
+    </tr>
+  );
+};
