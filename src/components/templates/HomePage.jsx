@@ -12,11 +12,15 @@ const HomePage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      setIsLoading(true);
-      const res = await fetch(getCoinList(page, currency));
-      const json = await res.json();
-      setCoins(json);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const res = await fetch(getCoinList(page, currency));
+        const json = await res.json();
+        setCoins(json);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getData();
   }, [page, currency]);
